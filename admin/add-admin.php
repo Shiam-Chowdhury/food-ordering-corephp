@@ -5,7 +5,7 @@
       <div class="wrapper">
         <h1>Add Admin</h1>
         <br>
-        <p class="error-message">
+        <p class="error">
             <?php
                 if(isset($_SESSION['add'])){
                     echo $_SESSION['add'];
