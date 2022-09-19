@@ -28,6 +28,10 @@
   width: 30%;
 }
 
+.tbl-40 {
+  width: 40%;
+}
+
 table tr th {
   border-bottom: 1px solid black;
   padding: 1%;
