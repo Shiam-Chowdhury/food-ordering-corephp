@@ -18,9 +18,21 @@
                 echo $_SESSION['delete'];
                 unset($_SESSION['delete']);
             }
+            if(isset($_SESSION['delete-failed'])){
+                echo $_SESSION['delete-failed'];
+                unset($_SESSION['delete-failed']);
+            }
             if(isset($_SESSION['no-category-found'])){
                 echo $_SESSION['no-category-found'];
                 unset($_SESSION['no-category-found']);
+            }
+            if(isset($_SESSION['update'])){
+                echo $_SESSION['update'];
+                unset($_SESSION['update']);
+            }
+            if(isset($_SESSION['upload'])){
+                echo $_SESSION['upload'];
+                unset($_SESSION['upload']);
             }
         ?>
         <br>

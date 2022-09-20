@@ -3,7 +3,7 @@
 <?php
     $id = $_GET['id'];
 
-    $sql = "SELECT * FROM tbl_category where id=$id";
+    $sql = "SELECT * FROM tbl_food where id=$id";
 
     $res = mysqli_query($connection, $sql);
 
@@ -14,6 +14,9 @@
         if($count == 1){
             $row = mysqli_fetch_assoc($res);
             $title = $row['title'];
+            $description = $row['description'];
+            $price = $row['price'];
+            $current_category = $row['category_id'];
             $current_image = $row['image_name'];
             $featured = $row['featured'];
             $active = $row['active'];
@@ -39,11 +42,22 @@
         <br>
         <form action="" method="POST" enctype="multipart/form-data">
             <table class="tbl-40">
-                <tr>
+            <tr>
                     <td>Title:</td>
-                    <td><input type="text" name="title" value="<?php echo $title;?>"></td>
+                    <td><input type="text" name="title" value="<?php echo $title;?>" class="input-text"></td>
                 </tr>
-
+                <tr>
+                    <td>Description:</td>
+                    <td>
+                        <textarea name="description" cols="30" rows="5">
+                            <?php echo $description;?>
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td><input type="number" name="price" value="<?php echo $price;?>" class="input-text"></td>
+                </tr>
                 <tr>
                     <td>Current Image:</td>
                     <td>
@@ -52,7 +66,7 @@
                                 ?>
                                     <img 
                                         width="100px" 
-                                        src="<?php echo SITEURL; ?>images/category/<?php echo $current_image;?>"
+                                        src="<?php echo SITEURL; ?>images/food/<?php echo $current_image;?>"
                                     >
                                 <?php
                             }else{
@@ -61,12 +75,41 @@
                         ?>
                     </td>
                 </tr>
-
                 <tr>
                     <td>New Image:</td>
                     <td><input type="file" name="image"></td>
                 </tr>
+                <tr>
+                    <td>Category:</td>  
+                    <td>
+                        <select name="category" class="input-text">
+                            <?php
+                                $sql2 = "SELECT * FROM tbl_category WHERE active='Yes'";
 
+                                $res2 = mysqli_query($connection, $sql2);
+
+                                $count = mysqli_num_rows($res2);
+
+                                if($count > 0){
+                                    while($row = mysqli_fetch_assoc($res2))
+                                    {
+                                        $id = $row['id'];
+                                        $title = $row['title'];
+
+                                        ?>
+                                            <option <?php if($current_category == $id){echo "selected";} ?> value="<?php echo $id; ?>"><?php echo $title; ?></option>
+                                        <?php
+                                    }
+                                }
+                                else{
+                                    ?>
+                                        <option value="0">No category found</option>
+                                    <?php
+                                }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
                 <tr>
                     <td>Featured:</td>
                     <td>
@@ -90,8 +133,6 @@
                 </tr>
             </table>
         </form>
-
-        <div class="clearfix"></div>
     </div>
 </div>
 
@@ -99,7 +140,10 @@
     if(isset($_POST['submit'])){
         $id = $_POST['id'];
         $title = $_POST['title'];
+        $description = $_POST['description'];
+        $price = $_POST['price'];
         $current_image = $_POST['current_image'];
+        $category_id = $_POST['category'];
         $featured = $_POST['featured'];
         $active = $_POST['active'];
 
@@ -112,11 +156,11 @@
                 //auto rename
                 //get the extension first
                 $ext = end(explode('.', $image_name));
-                $image_name = "Food_Category".rand(000, 999).'.'.$ext;
+                $image_name = "Food_Name".rand(000, 999).'.'.$ext;
 
                 $source_path = $_FILES['image']['tmp_name'];
 
-                $destination_path = "../images/category/".$image_name;
+                $destination_path = "../images/food/".$image_name;
 
                 //upload
                 $upload = move_uploaded_file($source_path, $destination_path);
@@ -126,18 +170,18 @@
                     $_SESSION['upload'] = '<div class="error">failed to upload image!</div>';
 
                     // rediection to add admin
-                    header("location:".SITEURL.'admin/manage-category.php');
+                    header("location:".SITEURL.'admin/manage-food.php');
 
                     die();
                 }
 
                 //remove current image
-                $remove_path = "../images/category/".$current_image;
+                $remove_path = "../images/food/".$current_image;
                 $remove = unlink($remove_path);
 
                 if($remove == false){
                     $_SESSION['failed-remove'] = '<div class="error">failed to remove current image!</div>';
-                    header("location:".SITEURL.'admin/manage-category.php');
+                    header("location:".SITEURL.'admin/manage-food.php');
                     die();
                 }
 
@@ -149,23 +193,30 @@
         }
 
         //update the database
-        $sql2 = "UPDATE tbl_category SET
+        $sql3 = "UPDATE tbl_food SET
                 title='$title',
+                description='$description',
+                price=$price,
                 image_name='$image_name',
+                category_id=$category_id,
                 featured='$featured',
                 active='$active'
                 WHERE id=$id
                 ";
+        
+        // echo $sql3;
+        // print_r($connection) ;
+        // die();
 
         //executing the query
-        $res2 = mysqli_query($connection, $sql2);
+        $res3 = mysqli_query($connection, $sql3);
 
-        if($res2 == true){
-            $_SESSION['update'] = "<div class='success'>Category updated successfully!</div>";
-            header('location:'.SITEURL.'admin/manage-category.php');
+        if($res3 == true){
+            $_SESSION['update'] = "<div class='success'>Food updated successfully!</div>";
+            header('location:'.SITEURL.'admin/manage-food.php');
         }else{
-            $_SESSION['update'] = "<div class='error'>Category update failed!</div>";
-            header('location:'.SITEURL.'admin/manage-category.php');
+            $_SESSION['update'] = "<div class='error'>Food update failed!</div>";
+            header('location:'.SITEURL.'admin/manage-food.php');
         }
     }
 ?>

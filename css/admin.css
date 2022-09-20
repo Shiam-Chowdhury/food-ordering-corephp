@@ -50,6 +50,10 @@ table tr td {
   margin-right: 10px;
 }
 
+.mt-10 {
+  margin-top: 10px;
+}
+
 .btn-primary {
   background-color: #1e90ff;
   padding: 1%;
