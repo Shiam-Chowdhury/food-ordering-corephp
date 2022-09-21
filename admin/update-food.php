@@ -128,7 +128,7 @@
                     <td colspan="2">
                         <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
-                        <input type="submit" name="submit" value="Add Category" class="btn-secondary">
+                        <input type="submit" name="submit" value="Add Food" class="btn-secondary">
                     </td>
                 </tr>
             </table>
@@ -157,32 +157,27 @@
                 //get the extension first
                 $ext = end(explode('.', $image_name));
                 $image_name = "Food_Name".rand(000, 999).'.'.$ext;
-
                 $source_path = $_FILES['image']['tmp_name'];
-
                 $destination_path = "../images/food/".$image_name;
-
                 //upload
                 $upload = move_uploaded_file($source_path, $destination_path);
-
                 if($upload == false){
                     // adding session for showing admin insert failed message
                     $_SESSION['upload'] = '<div class="error">failed to upload image!</div>';
-
                     // rediection to add admin
                     header("location:".SITEURL.'admin/manage-food.php');
-
                     die();
                 }
-
-                //remove current image
-                $remove_path = "../images/food/".$current_image;
-                $remove = unlink($remove_path);
-
-                if($remove == false){
-                    $_SESSION['failed-remove'] = '<div class="error">failed to remove current image!</div>';
-                    header("location:".SITEURL.'admin/manage-food.php');
-                    die();
+                if($current_image != "")
+                {
+                    //remove current image
+                    $remove_path = "../images/food/".$current_image;
+                    $remove = unlink($remove_path);
+                    if($remove == false){
+                        $_SESSION['failed-remove'] = '<div class="error">failed to remove current image!</div>';
+                        header("location:".SITEURL.'admin/manage-food.php');
+                        die();
+                    }
                 }
 
             }else{
@@ -193,12 +188,12 @@
         }
 
         //update the database
-        $sql3 = "UPDATE tbl_food SET
+        $food_update_query = "UPDATE tbl_food SET
                 title='$title',
                 description='$description',
-                price=$price,
+                price='$price',
                 image_name='$image_name',
-                category_id=$category_id,
+                category_id='$category_id',
                 featured='$featured',
                 active='$active'
                 WHERE id=$id
@@ -209,7 +204,7 @@
         // die();
 
         //executing the query
-        $res3 = mysqli_query($connection, $sql3);
+        $res3 = mysqli_query($connection, $food_update_query);
 
         if($res3 == true){
             $_SESSION['update'] = "<div class='success'>Food updated successfully!</div>";

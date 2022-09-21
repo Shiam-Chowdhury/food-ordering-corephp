@@ -113,34 +113,28 @@
                 //get the extension first
                 $ext = end(explode('.', $image_name));
                 $image_name = "Food_Category".rand(000, 999).'.'.$ext;
-
                 $source_path = $_FILES['image']['tmp_name'];
-
                 $destination_path = "../images/category/".$image_name;
-
                 //upload
                 $upload = move_uploaded_file($source_path, $destination_path);
-
                 if($upload == false){
                     // adding session for showing admin insert failed message
                     $_SESSION['upload'] = '<div class="error">failed to upload image!</div>';
-
                     // rediection to add admin
                     header("location:".SITEURL.'admin/manage-category.php');
-
                     die();
                 }
-
-                //remove current image
-                $remove_path = "../images/category/".$current_image;
-                $remove = unlink($remove_path);
-
-                if($remove == false){
-                    $_SESSION['failed-remove'] = '<div class="error">failed to remove current image!</div>';
-                    header("location:".SITEURL.'admin/manage-category.php');
-                    die();
+                if($current_image != "")
+                {
+                    //remove current image
+                    $remove_path = "../images/category/".$current_image;
+                    $remove = unlink($remove_path);
+                    if($remove == false){
+                        $_SESSION['failed-remove'] = '<div class="error">failed to remove current image!</div>';
+                        header("location:".SITEURL.'admin/manage-category.php');
+                        die();
+                    }
                 }
-
             }else{
                 $image_name = $current_image;
             }

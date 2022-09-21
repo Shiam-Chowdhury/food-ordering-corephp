@@ -1,46 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- Important to make website responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Website</title>
+<?php include('./partials-front/menu.php') ?>
 
-    <!-- Link our CSS file -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <?php 
+        if(isset($_GET['food_id']))
+        {
+            $food_id = $_GET['food_id'];
+    
+            $sql = "SELECT * FROM tbl_food WHERE id=$food_id";
+            $res = mysqli_query($connection, $sql);
+            $count = mysqli_num_rows($res);
+            if($count == 1){
+                $row = mysqli_fetch_assoc($res);
+                $title = $row['title'];
+                $price = $row['price'];
+                $image_name = $row['image_name'];
+            }else{
+                header('location:'.SITEURL);
+            }
+            $category_title = $row['title'];
+        }else{
+            header('location:'.SITEURL);
+        }
+    ?>
 
-<body>
-    <!-- Navbar Section Starts Here -->
-    <section class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="#" title="Logo">
-                    <img src="images/logo.png" alt="Restaurant Logo" class="img-responsive">
-                </a>
-            </div>
-
-            <div class="menu text-right">
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="categories.html">Categories</a>
-                    </li>
-                    <li>
-                        <a href="foods.html">Foods</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="clearfix"></div>
-        </div>
-    </section>
-    <!-- Navbar Section Ends Here -->
 
     <!-- fOOD sEARCH Section Starts Here -->
     <section class="food-search">
@@ -53,12 +34,24 @@
                     <legend>Selected Food</legend>
 
                     <div class="food-menu-img">
-                        <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                        <?php 
+                            if($image_name != ""){
+                        ?>
+                            <img 
+                                src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>" 
+                                alt="<?php echo $title; ?>" 
+                                class="img-responsive img-curve"
+                            >
+                        <?php
+                            }else{
+                                echo "<div class='error'>Image not available</div>";
+                            }
+                        ?>
                     </div>
     
                     <div class="food-menu-desc">
-                        <h3>Food Title</h3>
-                        <p class="food-price">$2.3</p>
+                        <h3><?php echo $title; ?></h3>
+                        <p class="food-price">$<?php echo $price; ?></p>
 
                         <div class="order-label">Quantity</div>
                         <input type="number" name="qty" class="input-responsive" value="1" required>
@@ -108,13 +101,4 @@
     </section>
     <!-- social Section Ends Here -->
 
-    <!-- footer Section Starts Here -->
-    <section class="footer">
-        <div class="container text-center">
-            <p>All rights reserved. Designed By <a href="#">Vijay Thapa</a></p>
-        </div>
-    </section>
-    <!-- footer Section Ends Here -->
-
-</body>
-</html>
+<?php include('./partials-front/footer.php') ?>
