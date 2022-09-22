@@ -65,19 +65,19 @@
                     $res = mysqli_query($connection, $update_sql);
                     if($res == TRUE) {
                         $_SESSION['password_update'] = "<div class='success'>password updated successfully!</div>";
-                        header('location:'.SITEURL.'admin/manage-admin.php');
+                        header('location:'.SITEURL.'admin/manage-admin');
                     }else{
                         $_SESSION['password_update'] = "<div class='error'>password updated failed!</div>";
-                        header('location:'.SITEURL.'admin/manage-admin.php');
+                        header('location:'.SITEURL.'admin/manage-admin');
                     }
                 }else{
                     $_SESSION['password_not_matched'] = "<div class='error'>password not matched!</div>";
-                    header('location:'.SITEURL.'admin/update-password.php');
+                    header('location:'.SITEURL.'admin/update-password');
                 }
 
             }else{
                 $_SESSION['user_not_found'] = "<div class='error'>user not found</div>";
-                header('location:'.SITEURL.'admin/manage-admin.php');
+                header('location:'.SITEURL.'admin/manage-admin');
             }
         }
 

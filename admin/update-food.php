@@ -208,10 +208,10 @@
 
         if($res3 == true){
             $_SESSION['update'] = "<div class='success'>Food updated successfully!</div>";
-            header('location:'.SITEURL.'admin/manage-food.php');
+            header('location:'.SITEURL.'admin/manage-food');
         }else{
             $_SESSION['update'] = "<div class='error'>Food update failed!</div>";
-            header('location:'.SITEURL.'admin/manage-food.php');
+            header('location:'.SITEURL.'admin/manage-food');
         }
     }
 ?>

@@ -59,12 +59,12 @@
             $_SESSION['login'] = "<div class='success'>Login successfully!</div>";
             $_SESSION['user'] = $username;
             //rediection to manage admin
-            header("location:".SITEURL.'admin/');
+            header("location:".SITEURL.'admin/dashboard');
         }else{
             $_SESSION['login'] = "<div class='error text-center'>username or password not matched!</div>";
 
             //rediection to manage admin
-            header("location:".SITEURL.'admin/login.php');
+            header("location:".SITEURL.'admin/login');
         }
     }
 ?>

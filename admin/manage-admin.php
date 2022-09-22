@@ -41,7 +41,7 @@
         </p>
         
         <br>
-        <a class="btn-primary" href="add-admin.php">Add New Admin</a>
+        <a class="btn-primary" href="add-admin">Add New Admin</a>
         <br>
         <br>
         <table class="tbl-full">
@@ -75,16 +75,16 @@
                                     <td>
                                         <a 
                                             class="btn-primary mr-10" 
-                                            href="<?php echo SITEURL;?>admin/update-password.php?id=<?php echo $id;?>" 
+                                            href="<?php echo SITEURL;?>admin/update-password?id=<?php echo $id;?>" 
                                             >update password
                                         </a>
                                         <a 
                                             class="btn-secondary mr-10" 
-                                            href="<?php echo SITEURL;?>admin/update-admin.php?id=<?php echo $id;?>" 
+                                            href="<?php echo SITEURL;?>admin/update-admin?id=<?php echo $id;?>" 
                                             >update
                                         </a>
                                         <a 
-                                            href="<?php echo SITEURL;?>admin/delete-admin.php?id=<?php echo $id;?>" 
+                                            href="<?php echo SITEURL;?>admin/delete-admin?id=<?php echo $id;?>" 
                                             class="btn-danger mr-10" href="#"
                                             >delete
                                         </a>

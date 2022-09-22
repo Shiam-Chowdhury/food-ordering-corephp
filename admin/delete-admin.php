@@ -16,12 +16,12 @@
         $_SESSION['delete'] = 'admin deleted successfully!';
 
         //redirect to manage admin page
-        header("location:".SITEURL.'admin/manage-admin.php');
+        header("location:".SITEURL.'admin/manage-admin');
 
     }else{
         $_SESSION['delete-failed'] = 'failed to delete admin!';
 
         //redirect to manage admin page
-        header("location:".SITEURL.'admin/manage-admin.php');
+        header("location:".SITEURL.'admin/manage-admin');
     }
 ?>

@@ -36,7 +36,7 @@
                 }
             ?>
         <br>
-        <a class="btn-primary" href="<?php echo SITEURL; ?>admin/add-food.php">Add New Food</a>
+        <a class="btn-primary" href="<?php echo SITEURL; ?>admin/add-food">Add New Food</a>
         <br>
         <br>
         <table class="tbl-full">
@@ -88,12 +88,12 @@
                                     <td>
                                         <a 
                                             class="btn-secondary" 
-                                            href="<?php echo SITEURL;?>admin/update-food.php?id=<?php echo $id;?>"
+                                            href="<?php echo SITEURL;?>admin/update-food?id=<?php echo $id;?>"
                                             >update
                                         </a>
                                         <a 
                                             class="btn-danger"
-                                            href="<?php echo SITEURL;?>admin/delete-food.php?id=<?php echo $id;?>&image_name=<?php echo $image_name;?>"
+                                            href="<?php echo SITEURL;?>admin/delete-food?id=<?php echo $id;?>&image_name=<?php echo $image_name;?>"
                                             >delete
                                         </a>
                                     </td>

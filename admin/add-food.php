@@ -139,7 +139,7 @@
                     $_SESSION['upload'] = '<div class="error">failed to upload image!</div>';
 
                     // rediection to add admin
-                    header("location:".SITEURL.'admin/add-food.php');
+                    header("location:".SITEURL.'admin/add-food');
 
                     die();
                 }

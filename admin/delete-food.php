@@ -15,7 +15,7 @@
             if($remove == false)
             {
                 $_SESSION['remove'] = "<div class='error'>Failed to remove food image</div>";
-                header("location:".SITEURL."admin/manage-food.php");
+                header("location:".SITEURL."admin/manage-food");
                 die(); //to stop the process
             }
         }
@@ -30,16 +30,16 @@
             $_SESSION['delete'] = '<div class="success">food deleted successfully!</div>';
 
             //redirect to manage admin page
-            header("location:".SITEURL.'admin/manage-food.php');
+            header("location:".SITEURL.'admin/manage-food');
 
         }else{
             $_SESSION['delete-failed'] = 'failed to delete food!';
 
             //redirect to manage admin page
-            header("location:".SITEURL.'admin/manage-food.php');
+            header("location:".SITEURL.'admin/manage-food');
         }
     }else{
         $_SESSION['delete'] = "<div class='error'>Failed to delete food.</div>";
-        header('location:'.SITEURL.'admin/manage-food.php');
+        header('location:'.SITEURL.'admin/manage-food');
     }
 ?>

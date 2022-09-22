@@ -81,7 +81,7 @@
                                     <td>
                                         <a 
                                             class="btn-secondary" 
-                                            href="<?php echo SITEURL;?>admin/update-order.php?id=<?php echo $id;?>"
+                                            href="<?php echo SITEURL;?>admin/update-order?id=<?php echo $id;?>"
                                             >update
                                         </a>
                                     </td>

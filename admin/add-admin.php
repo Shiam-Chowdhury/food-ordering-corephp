@@ -65,7 +65,7 @@
             $_SESSION['add'] = 'Admin is added successfully!';
 
             //rediection to manage admin
-            header("location:".SITEURL.'admin/manage-admin.php');
+            header("location:".SITEURL.'admin/manage-admin');
         }else{
             // echo "error inserting data";
 
@@ -73,7 +73,7 @@
             $_SESSION['add'] = 'failed to add admin';
 
             //rediection to add admin
-            header("location:".SITEURL.'admin/add-admin.php');
+            header("location:".SITEURL.'admin/add-admin');
         }
     }
 ?>

@@ -32,11 +32,11 @@
                         $customer_address = $row['customer_address'];
                     }else{
                         $_SESSION['no-category-found'] = "<div class='error'>no category found</div>";
-                        header("location:".SITEURL."admin/manage-category.php");
+                        header("location:".SITEURL."admin/manage-category");
                     }
                 }
             }else{
-                header('location:'.SITEURL.'admin/manage-order.php');
+                header('location:'.SITEURL.'admin/manage-order');
             }
         ?>
         <form action="" method="POST" enctype="multipart/form-data">
@@ -130,10 +130,10 @@
 
         if($res2 == true){
             $_SESSION['update'] = "<div class='success'>Order updated successfully!</div>";
-            header('location:'.SITEURL.'admin/manage-order.php');
+            header('location:'.SITEURL.'admin/manage-order');
         }else{
             $_SESSION['update'] = "<div class='error'>Order update failed!</div>";
-            header('location:'.SITEURL.'admin/manage-order.php');
+            header('location:'.SITEURL.'admin/manage-order');
         }
     }
 ?>

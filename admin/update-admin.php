@@ -67,10 +67,10 @@
 
         if($res == true){
             $_SESSION['update'] = "<div class='success'>Admin updated successfully!</div>";
-            header('location:'.SITEURL.'admin/manage-admin.php');
+            header('location:'.SITEURL.'admin/manage-admin');
         }else{
             $_SESSION['update'] = "<div class='error'>Admin update failed!</div>";
-            header('location:'.SITEURL.'admin/manage-admin.php');
+            header('location:'.SITEURL.'admin/manage-admin');
         }
     }
 ?>

@@ -15,7 +15,7 @@
             if($remove == false)
             {
                 $_SESSION['remove'] = "<div class='error'>Failed to remove category image</div>";
-                header("location:".SITEURL."admin/manage-category.php");
+                header("location:".SITEURL."admin/manage-category");
                 die(); //to stop the process
             }
         }
@@ -30,17 +30,17 @@
             $_SESSION['delete'] = '<div class="success">category deleted successfully!</div>';
 
             //redirect to manage admin page
-            header("location:".SITEURL.'admin/manage-category.php');
+            header("location:".SITEURL.'admin/manage-category');
 
         }else{
             $_SESSION['delete-failed'] = 'failed to delete category!';
 
             //redirect to manage admin page
-            header("location:".SITEURL.'admin/manage-category.php');
+            header("location:".SITEURL.'admin/manage-category');
         }
     }else{
         //redirect to manage category
-        header('location:'.SITEURL.'admin/manage-category.php');
+        header('location:'.SITEURL.'admin/manage-category');
     }
 
 ?>

@@ -38,7 +38,7 @@
                         $title = $rows['title'];
                         $image_name = $rows['image_name'];
                         ?>
-                            <a href="<?php echo SITEURL;?>category-foods.php?category_id=<?php echo $id; ?>">
+                            <a href="<?php echo SITEURL;?>category-foods?category_id=<?php echo $id; ?>">
                                 <div class="box-3 float-container">
                                     <?php 
                                         if($image_name != ""){
@@ -115,7 +115,7 @@
                                 </p>
                                 <br>
 
-                                <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
+                                <a href="<?php echo SITEURL; ?>order?food_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
                             </div>
                         </div>
                     <?php

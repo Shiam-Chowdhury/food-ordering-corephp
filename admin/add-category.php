@@ -98,7 +98,7 @@
                     $_SESSION['upload'] = '<div class="error">failed to upload image!</div>';
 
                     // rediection to add admin
-                    header("location:".SITEURL.'admin/add-category.php');
+                    header("location:".SITEURL.'admin/add-category');
 
                     die();
                 }
@@ -123,7 +123,7 @@
             $_SESSION['add'] = '<div class="success">Category is added successfully!</div>';
 
             //rediection to manage admin
-            header("location:".SITEURL.'admin/manage-category.php');
+            header("location:".SITEURL.'admin/manage-category');
         }else{
             // echo "error inserting data";
 
@@ -131,7 +131,7 @@
             $_SESSION['add'] = '<div class="error">failed to add Category</div>';
 
             // rediection to add admin
-            header("location:".SITEURL.'admin/add-category.php');
+            header("location:".SITEURL.'admin/add-category');
         }
     }
 ?>

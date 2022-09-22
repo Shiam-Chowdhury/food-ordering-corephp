@@ -156,10 +156,10 @@
 
         if($res2 == true){
             $_SESSION['update'] = "<div class='success'>Category updated successfully!</div>";
-            header('location:'.SITEURL.'admin/manage-category.php');
+            header('location:'.SITEURL.'admin/manage-category');
         }else{
             $_SESSION['update'] = "<div class='error'>Category update failed!</div>";
-            header('location:'.SITEURL.'admin/manage-category.php');
+            header('location:'.SITEURL.'admin/manage-category');
         }
     }
 ?>

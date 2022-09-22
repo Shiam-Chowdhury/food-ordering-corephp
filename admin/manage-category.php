@@ -85,9 +85,9 @@
                                 <td><?php echo $active; ?></td>
                                 <td>
                                     <a class="btn-secondary"
-                                        href="<?php echo SITEURL;?>admin/update-category.php?id=<?php echo $id;?>">update</a>
+                                        href="<?php echo SITEURL;?>admin/update-category?id=<?php echo $id;?>">update</a>
                                     <a class="btn-danger" 
-                                        href="<?php echo SITEURL;?>admin/delete-category.php?id=<?php echo $id;?>&image_name=<?php echo $image_name;?>"
+                                        href="<?php echo SITEURL;?>admin/delete-category?id=<?php echo $id;?>&image_name=<?php echo $image_name;?>"
                                     >delete</a>
                                 </td>
                             </tr>
