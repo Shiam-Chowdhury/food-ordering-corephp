@@ -42,7 +42,7 @@
         <br>
         <form action="" method="POST" enctype="multipart/form-data">
             <table class="tbl-40">
-            <tr>
+                <tr>
                     <td>Title:</td>
                     <td><input type="text" name="title" value="<?php echo $title;?>" class="input-text"></td>
                 </tr>
@@ -128,7 +128,7 @@
                     <td colspan="2">
                         <input type="hidden" name="current_image" value="<?php echo $current_image; ?>">
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
-                        <input type="submit" name="submit" value="Add Food" class="btn-secondary">
+                        <input type="submit" name="submit" value="Update Food" class="btn-secondary">
                     </td>
                 </tr>
             </table>

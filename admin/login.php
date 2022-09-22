@@ -39,7 +39,10 @@
 <?php
     if(isset($_POST['submit']))
     {
-        $username = $_POST['username'];
+        // $username = $_POST['username'];
+        // $password = md5($_POST['password']);
+
+        $username = mysqli_real_escape_string($connection,$_POST['username']);
         $password = md5($_POST['password']);
 
         // echo $username , $password;

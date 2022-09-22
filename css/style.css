@@ -35,6 +35,18 @@
   color: white;
 }
 
+.success {
+  margin-bottom: 10px;
+  color: green;
+  font-weight: bold;
+}
+
+.error {
+  margin-bottom: 10px;
+  color: red;
+  font-weight: bold;
+}
+
 .clearfix {
   clear: both;
   float: none;

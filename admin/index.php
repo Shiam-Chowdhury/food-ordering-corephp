@@ -11,24 +11,45 @@
             }
         ?>
         <div class="col-4">
-          <h1>5</h1>
+          <?php 
+            $sql = "SELECT * from tbl_category";
+            $res = mysqli_query($connection, $sql);
+            $count = mysqli_num_rows($res);
+          ?>
+          <h1><?php echo $count; ?></h1>
           <br />
           Categories
         </div>
         <div class="col-4">
-          <h1>5</h1>
+          <?php 
+            $sql = "SELECT * from tbl_food";
+            $res = mysqli_query($connection, $sql);
+            $count = mysqli_num_rows($res);
+          ?>
+          <h1><?php echo $count; ?></h1>
           <br />
-          Categories
+          Foods
         </div>
         <div class="col-4">
-          <h1>5</h1>
+          <?php 
+            $sql = "SELECT * from tbl_order";
+            $res = mysqli_query($connection, $sql);
+            $count = mysqli_num_rows($res);
+          ?>
+          <h1><?php echo $count; ?></h1>
           <br />
-          Categories
+          Orders
         </div>
         <div class="col-4">
-          <h1>5</h1>
+          <?php 
+            $sql = "SELECT SUM(total) as Total from tbl_order WHERE status='Delivered'";
+            $res = mysqli_query($connection, $sql);
+            $row = mysqli_fetch_assoc($res);
+            $Total = $row['Total'];
+          ?>
+          <h1><?php echo '$'.$Total; ?></h1>
           <br />
-          Categories
+          Revenue
         </div>
 
         <div class="clearfix"></div>
